@@ -1,6 +1,7 @@
 import "./App.css";
 import { IoMdAdd } from "react-icons/io";
 import LineChart from "./components/LineChart";
+import CircleChart from "./components/CircleChart";
 
 function App() {
   return (
@@ -24,17 +25,51 @@ function App() {
         </div>
       </section>
 
-      
-
-      {/* section for charts and bars */}
-      {/* <section className="w-screen p-4">
-        <div className="w-full h-auto flex justify-between items-center gap-4">
-          <div className="w-[40vw] h-auto flex justify-center items-end border-2 border-[#800f2f] rounded-xl p-2">
-            <LineChart />
+      <section className="w-full h-auto p-4">
+        <div className="w-full h-auto flex justify-center items-center">
+          <div className="w-full h-[300px] flex flex-col justify-start items-center border-2 border-[#800f2f] rounded-xl">
+            {/* data heads */}
+            <div className="w-full h-auto flex justify-around items-center rounded-t-xl border-b-2 border-[#800f2f] bg-[#ffb3c1] text-[#800f2f]">
+              <p className="">Date</p>
+              <p className="">Amount</p>
+              <p className="">Type</p>
+            </div>
+            {/* data values */}
           </div>
-          <div className="w-[50%]"></div>
+          <div className="w-full h-[300px] flex justify-center items-center relative">
+            <div className="w-auto h-auto flex flex-col justify-center items-start gap-2 absolute top-0 left-4">
+              <button className="py-1 px-2 text-sm rounded-xl bg-[#c9184a] text-[#fff0f3] hover:bg-[#ffb3c1] hover:text-[#a4133c]">
+                This Day
+              </button>
+              <button className="py-1 px-2 text-sm rounded-xl bg-[#c9184a] text-[#fff0f3] hover:bg-[#ffb3c1] hover:text-[#a4133c]">
+                This Week
+              </button>
+              <button className="py-1 px-2 text-sm rounded-xl bg-[#c9184a] text-[#fff0f3] hover:bg-[#ffb3c1] hover:text-[#a4133c]">
+                This Month
+              </button>
+            </div>
+            <CircleChart />
+          </div>
         </div>
-      </section> */}
+      </section>
+
+      <section className="w-full h-auto p-4">
+        <div className="w-full bg-[#ffccd5] rounded-2xl px-8 pb-8 pt-4">
+          <p className="text-xl font-semibold pb-2 text-[#800f2f]">
+            Search Expenses For
+          </p>
+          <div className="w-full flex justify-start items-center gap-2 pb-6">
+            <input
+              type="date"
+              className="w-auto border-2 border-[#800f2f] rounded-xl py-1 px-2 bg-[#fff0f3] text-[#800f2f] outline-none"
+            />
+            <button className="w-auto border-2 border-transparent rounded-xl py-1 px-2 bg-[#800f2f] hover:bg-[#fff0f3]  text-[#fff0f3] hover:text-[#800f2f]">
+              Search
+            </button>
+          </div>
+          <LineChart />
+        </div>
+      </section>
     </>
   );
 }
