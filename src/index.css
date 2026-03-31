@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: "Bricolage";
+    src: url('public/fonts/Bricolage.ttf');
+}
+
+* {
+    font-family: Bricolage;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
