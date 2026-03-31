@@ -23,13 +23,18 @@ function App() {
           </button>
         </div>
       </section>
+
+      
+
       {/* section for charts and bars */}
-      <section>
-        <div className="flex flex-col justify-center items-center bg-green-300">
-          <div className="max-w-[50%] w-100% bg-white p-5 m-7"></div>
-          <LineChart />
+      {/* <section className="w-screen p-4">
+        <div className="w-full h-auto flex justify-between items-center gap-4">
+          <div className="w-[40vw] h-auto flex justify-center items-end border-2 border-[#800f2f] rounded-xl p-2">
+            <LineChart />
+          </div>
+          <div className="w-[50%]"></div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }
