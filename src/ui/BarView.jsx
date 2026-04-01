@@ -2,6 +2,7 @@ import React from 'react'
 import CircleChart from '../components/CircleChart';
 
 const BarView = () => {
+  const typeLength = JSON.parse(localStorage.getItem("expenses")) || [];
   return (
     <>
       <div className="w-full h-[300px] flex justify-center items-center relative">
@@ -17,7 +18,7 @@ const BarView = () => {
           </button>
         </div>
         <div className="flex flex-col justify-center items-center absolute top-[50%] left-[50%] -translate-[50%] z-0">
-          <p className="text-6xl text-[#a4133c]">7</p>
+          <p className="text-6xl text-[#a4133c]"></p>
           <p className="text-xl text-[#a4133c]">Types</p>
         </div>
         <CircleChart />

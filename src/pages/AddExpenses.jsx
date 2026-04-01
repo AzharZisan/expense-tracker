@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const AddExpenses = () => {
   const [TypeInputValue, setTypeInputValue] = useState("");
-  const [amount, setAmount] = useState(Number)
-  const typeRef = useRef()
-  const dateRef = useRef()
+  const [amount, setAmount] = useState(Number);
+  const typeRef = useRef();
+  const dateRef = useRef();
 
   const expenseTypeArr = {
     id: crypto.randomUUID(),
@@ -24,28 +24,26 @@ const AddExpenses = () => {
     setTypeInputValue("");
   };
 
-  
   const handleTypeFocus = () => {
-    typeRef.current.value
-  }
-  
-  const handleDateFocus = () => {
-    dateRef.current.value
-  }
-
-  const expenseData = {
-    id: crypto.randomUUID(),
-    amount: amount,
-    type: typeRef.current,
-    date: dateRef.current,
+    typeRef.current.value;
   };
 
-  const existingExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-  
+  const handleDateFocus = () => {
+    dateRef.current.value;
+  };
+
   const handleAddExpenses = () => {
+    const expenseData = {
+      id: crypto.randomUUID(),
+      amount: amount,
+      type: typeRef.current.value,
+      date: dateRef.current.value,
+    };
+
+    const existingExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
     const updatedExpenses = [...existingExpenses, expenseData];
     localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
-  }
+  };
 
   return (
     <>
@@ -103,7 +101,7 @@ const AddExpenses = () => {
           />
           <Link to={"/"}>
             <button
-            onClick={handleAddExpenses}
+              onClick={handleAddExpenses}
               type="submit"
               className="w-full bg-[#a4133c] hover:bg-[#ffb3c1] py-2 px-14 rounded mt-4 text-[#fff0f3] hover:text-[#a4133c]"
             >
