@@ -1,7 +1,7 @@
 import "./App.css";
-import { IoMdAdd } from "react-icons/io";
-import LineChart from "./components/LineChart";
-import CircleChart from "./components/CircleChart";
+import DataSearch from "./ui/DataSearch";
+import BarView from "./ui/BarView";
+import AddButton from "./components/AddButton";
 
 function App() {
   return (
@@ -22,60 +22,17 @@ function App() {
             <p className="text-4xl text-[#fff0f3]">$76749.86</p>
           </div>
           {/* duration filter */}
-          <button className="w-auto h-full flex justify-center items-center gap-1 text-xl font-semibold text-[#800f2f] bg-[#ffccd5] pr-3 pl-4 py-3 rounded hover:bg-[#ff8fa3] cursor-pointer">
-            Add <IoMdAdd className="text-2xl font-semibold hover:rotate-360" />
-          </button>
+          <AddButton />
         </div>
       </section>
 
       <section className="w-full h-auto p-4">
-        <div className="w-full h-auto flex justify-center items-center">
-          <div className="w-full h-[300px] flex flex-col justify-start items-center border-2 border-[#800f2f] rounded-xl">
-            {/* data heads */}
-            <div className="w-full h-auto flex justify-around items-center rounded-t-xl border-b-2 border-[#800f2f] bg-[#ffb3c1] text-[#800f2f]">
-              <p className="">Date</p>
-              <p className="">Amount</p>
-              <p className="">Type</p>
-            </div>
-            {/* data values */}
-          </div>
-          <div className="w-full h-[300px] flex justify-center items-center relative">
-            <div className="w-auto h-auto flex flex-col justify-center items-start gap-2 absolute top-0 left-4">
-              <button className="py-1 px-2 text-sm rounded-xl bg-[#c9184a] text-[#fff0f3] hover:bg-[#ffb3c1] hover:text-[#a4133c]">
-                This Day
-              </button>
-              <button className="py-1 px-2 text-sm rounded-xl bg-[#c9184a] text-[#fff0f3] hover:bg-[#ffb3c1] hover:text-[#a4133c]">
-                This Week
-              </button>
-              <button className="py-1 px-2 text-sm rounded-xl bg-[#c9184a] text-[#fff0f3] hover:bg-[#ffb3c1] hover:text-[#a4133c]">
-                This Month
-              </button>
-            </div>
-            <div className="flex flex-col justify-center items-center absolute top-[50%] left-[50%] -translate-[50%] z-0">
-              <p className="text-6xl text-[#a4133c]">7</p>
-              <p className="text-xl text-[#a4133c]">Types</p>
-            </div>
-            <CircleChart />
-          </div>
-        </div>
+        <BarView />
+        <TableView />
       </section>
 
       <section className="w-full h-auto p-4">
-        <div className="w-full bg-[#ffccd5] rounded-2xl px-8 pb-8 pt-4">
-          <p className="text-xl font-semibold pb-2 text-[#800f2f]">
-            Search Expenses For
-          </p>
-          <div className="w-full flex justify-start items-center gap-2 pb-6">
-            <input
-              type="date"
-              className="w-auto border-2 border-[#800f2f] rounded-xl py-1 px-2 bg-[#fff0f3] text-[#800f2f] outline-none"
-            />
-            <button className="w-auto border-2 border-transparent rounded-xl py-1 px-2 bg-[#800f2f] hover:bg-[#fff0f3]  text-[#fff0f3] hover:text-[#800f2f]">
-              Search
-            </button>
-          </div>
-          <LineChart />
-        </div>
+        <DataSearch />
       </section>
     </>
   );
