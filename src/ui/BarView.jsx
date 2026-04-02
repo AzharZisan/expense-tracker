@@ -2,7 +2,19 @@ import React from 'react'
 import CircleChart from '../components/CircleChart';
 
 const BarView = () => {
-  const typeLength = JSON.parse(localStorage.getItem("expenses")) || [];
+  const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+  const result = expenses.reduce((acc, item) => {
+    const existing = acc.find((i) => i.type == item.type);
+
+    if (existing) {
+      existing.amount = Number(existing.amount) + Number(item.amount);
+    } else {
+      acc.push({ ...item });
+    }
+    return acc;
+  }, []);
+
   return (
     <>
       <div className="w-full h-[300px] flex justify-center items-center relative">
@@ -18,7 +30,7 @@ const BarView = () => {
           </button>
         </div>
         <div className="flex flex-col justify-center items-center absolute top-[50%] left-[50%] -translate-[50%] z-0">
-          <p className="text-6xl text-[#a4133c]"></p>
+          <p className="text-6xl text-[#a4133c]">{result.length}</p>
           <p className="text-xl text-[#a4133c]">Types</p>
         </div>
         <CircleChart />

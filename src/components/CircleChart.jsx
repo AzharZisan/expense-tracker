@@ -4,18 +4,29 @@ import { Bar, Doughnut, Line } from "react-chartjs-2";
 
 const CircleChart = () => {
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-  const amounts = expenses.map((item) => item.amount);
-  const labels = expenses.map((item) => item.type);
-  const typeID = expenses.map((item) => item.typeID);
+
+  const result = expenses.reduce((acc, item) => {
+    const existing = acc.find((i) => i.type == item.type);
+
+    if (existing) {
+      existing.amount = Number(existing.amount) + Number(item.amount)
+    } else {
+      acc.push({ ...item });
+    }
+    return acc;
+  }, []);
+
+  const labels = result.map((item) => item.type)
+  const amounts = result.map((item) => item.amount)
 
   return (
     <Doughnut
       data={{
-        labels: [...labels, labels],
+        labels: labels,
         datasets: [
           {
             label: "Revenue",
-            data: [...amounts, amounts],
+            data: amounts,
             borderColor: "#c9184a",
             pointStyle: false,
             fill: true,

@@ -18,12 +18,28 @@ const LineChart = () => {
     return gradient;
   };
 
+  const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+  const result = expenses.reduce((acc, item) => {
+    const existing = acc.find((i) => i.type == item.type);
+
+    if (existing) {
+      existing.amount = Number(existing.amount) + Number(item.amount);
+    } else {
+      acc.push({ ...item });
+    }
+    return acc;
+  }, []);
+
+  const labels = result.map((item) => item.type);
+  const amounts = result.map((item) => item.amount);
+
   const data = {
-    labels: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "Y"],
+    labels: labels,
     datasets: [
       {
         label: " ",
-        data: [200, 150, 300, 123, 765, 504, 235, 1200, 400, 60],
+        data: amounts,
         borderColor: "#c9184a",
         tension: 0.1,
         fill: true,
