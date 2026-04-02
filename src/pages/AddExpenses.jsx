@@ -24,6 +24,8 @@ const AddExpenses = () => {
     setTypeInputValue("");
   };
 
+  const typeID = existingTypes.map((item) => item.id)
+
   const handleTypeFocus = () => {
     typeRef.current.value;
   };

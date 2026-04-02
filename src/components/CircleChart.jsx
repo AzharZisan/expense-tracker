@@ -11,11 +11,11 @@ const CircleChart = () => {
   return (
     <Doughnut
       data={{
-        labels: [labels],
+        labels: [...labels, labels],
         datasets: [
           {
             label: "Revenue",
-            data: [amounts],
+            data: [...amounts, amounts],
             borderColor: "#c9184a",
             pointStyle: false,
             fill: true,
