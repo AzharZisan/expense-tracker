@@ -18,7 +18,7 @@ const BarView = () => {
     return acc;
   }, []);
 
-  const thisDay = Temporal.Now.plainDateISO().toLocaleString()
+  const thisDay = Temporal.Now.plainDateISO().toString()
 
   const getWeekRange = (date = Temporal.Now.plainDateISO()) => {
     const startOfWeek = date.subtract({ days: date.dayOfWeek - 1 }).toLocaleString()
@@ -26,14 +26,11 @@ const BarView = () => {
     return { startOfWeek, endOfWeek }
   }
 
-  console.log(getWeekRange())
-
   const thisMonth = Temporal.Now.plainDateISO().month
-  console.log(thisMonth)
 
   return (
     <>
-      <GraphContext.Provider value={{ thisDay, thisMonth, result, btnStates }}>
+      <GraphContext.Provider value={{ thisDay, thisMonth, btnStates }}>
         <div className="w-full h-[300px] flex justify-center items-center relative">
           <div className="w-auto h-auto flex flex-col justify-center items-start gap-2 absolute top-0 left-4">
             <button onClick={() => setBtnStates('thisDay')} className={`py-1 px-2 text-sm rounded-xl ${btnStates === 'thisDay' ? 'bg-[#ffb3c1] text-[#a4133c]' : 'bg-[#c9184a] text-[#fff0f3]'}`}>

@@ -1,8 +1,11 @@
 import React from "react";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
+import { GraphContext } from "../context/context";
+import { useContext } from "react";
 
-const CircleChart = ({btnStates}) => {
+const CircleChart = () => {
+  const { thisDay, thisMonth, btnStates } = useContext(GraphContext)
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
   const result = expenses.reduce((acc, item) => {
@@ -16,17 +19,16 @@ const CircleChart = ({btnStates}) => {
     return acc;
   }, []);
 
-  const labelsThisDay = result.map((item) => item.type);
-  const amountsThisDay = result.map((item) => item.amount);
+  
 
   return (
     <Doughnut
       data={{
-        labels: labels,
+        labels: ['a'],
         datasets: [
           {
             label: "Revenue",
-            data: amounts,
+            data: [200],
             borderColor: "#c9184a",
             pointStyle: false,
             fill: true,
