@@ -35,17 +35,32 @@ const AddExpenses = () => {
   };
 
   const handleAddExpenses = () => {
+    const existingExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
     const expenseData = {
       id: crypto.randomUUID(),
-      amount: amount,
       type: typeRef.current.value,
+      totalAmount: amount,
       typeID: typeID[0],
-      date: dateRef.current.value,
+      entries: [{ date: dateRef.current.value, amount: amount }],
     };
 
-    const existingExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
     const updatedExpenses = [...existingExpenses, expenseData];
-    localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
+
+    const mergedExpenses = updatedExpenses.reduce((acc, item) => {
+      const existing = acc.find((e) => e.typeID === item.typeID);
+
+      if (existing) {
+        existing.entries.push(...item.entries);
+        existing.totalAmount =
+          Number(existing.totalAmount) + Number(item.entries[0].amount);
+      } else {
+        acc.push({ ...item });
+      }
+      return acc;
+    }, []);
+
+    // const updatedMerged = [...expenseData, mergedExpenses];
+    localStorage.setItem("expenses", JSON.stringify(mergedExpenses));
   };
 
   return (

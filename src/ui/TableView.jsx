@@ -25,10 +25,10 @@ const TableView = () => {
                 className="w-full h-auto flex justify-around border-b-2 items-center border-[#800f2f] text-[#800f2f]"
               >
                 <p className="w-full flex justify-center items-center">
-                  {item.date}
+                  {item.entries.map((i) => i.date)}
                 </p>
                 <p className="w-full flex justify-center items-center">
-                  ${Number(item.amount)}
+                  ${Number(item.entries.map((i) => i.amount))}
                 </p>
                 <p className="w-full flex justify-center items-center">
                   {item.type}
