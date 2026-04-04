@@ -1,11 +1,11 @@
 import React from "react";
+import { Temporal } from "@js-temporal/polyfill";
 
 const TotalExpenses = () => {
   const expenseData = JSON.parse(localStorage.getItem("expenses")) || [];
-  const totalAmount = expenseData.reduce(
-    (sum, item) => sum + Number(item?.totalAmount ?? 0),
-    0,
-  );
+  const thisDay = Temporal.Now.plainDateISO().toString()
+  const todayExpenses = expenseData.filter((i) => i.date === thisDay)
+  const totalAmount = todayExpenses.map((i) => i.totalAmount)
 
   return (
     <>
