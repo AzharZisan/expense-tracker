@@ -5,8 +5,8 @@ import { Temporal } from "@js-temporal/polyfill";
 
 const DataSearch = () => {
   const thisDay = Temporal.Now.plainDateISO().toString();
-  const [search, setSearch] = useState("");
-  const [btnInput, setBtnInput] = useState(thisDay);
+  const [search, setSearch] = useState(thisDay);
+  const [btnInput, setBtnInput] = useState();
 
   const handleSearchFocus = (e) => {
     setSearch(e.target.value);
@@ -50,7 +50,7 @@ const DataSearch = () => {
           </p>
           <div className="w-full flex justify-start items-center gap-2 pb-6">
             <input
-              value={btnInput}
+              value={search}
               onChange={handleSearchFocus}
               type="date"
               className="w-auto border-2 border-[#800f2f] rounded-xl py-1 px-2 bg-[#fff0f3] text-[#800f2f] outline-none"

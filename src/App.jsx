@@ -39,19 +39,32 @@ function App() {
         <div className="w-full p-2 bg-[#ff758f] text-[#800f2f] flex justify-center items-start flex-col gap-1 rounded-2xl">
           <p className="italic">
             *Disclaimer: The expense tracker has no database and it is storing
-            data in your browser cache. If having trouble while browsing,
-            please click "Clear Cache" button below and refresh the page.
+            data in your browser cache. If having trouble while browsing, please
+            click "Clear Cache" button below and refresh the page.
           </p>
           <p className="italic">
             *Note that: By clearing cache your data will be deleted.
           </p>
-          <button onClick={handleClear} className="text-md bg-[#800f2f] text-[#fff0f3] hover:bg-[#fff0f3] hover:text-[#800f2f] cursor-pointer py-1 px-3 rounded-xl">
+          <button
+            onClick={handleClear}
+            className="text-md bg-[#800f2f] text-[#fff0f3] hover:bg-[#fff0f3] hover:text-[#800f2f] cursor-pointer py-1 px-3 rounded-xl"
+          >
             Clear Cache
           </button>
           <p className="text-[#590d22]">
             Custom database will be added soon. Stay updated!
           </p>
         </div>
+      </div>
+      <div className="w-full h-auto bg-[#ffb3c1] text-[#800f2f] text-center p-2">
+        Made with ☕ and ❤️ by{" "}
+        <a
+          href="https://github.com/AzharZisan"
+          target="_blank"
+          className="hover:underline hover:text-[#590d22]"
+        >
+          Azhar Zisan
+        </a>
       </div>
     </>
   );

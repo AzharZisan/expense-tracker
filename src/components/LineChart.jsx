@@ -4,7 +4,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { SearchContext } from "../context/context";
 
 const LineChart = () => {
-  const { labels, amounts } = useContext(SearchContext)
+  const { labels, amounts } = useContext(SearchContext);
   const chartRef = useRef(null);
 
   const getGradient = (ctx, chartArea) => {
