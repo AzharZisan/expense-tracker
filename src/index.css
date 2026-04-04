@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Bricolage";
-    src: url('./public/fonts/Bricolage.ttf');
+    src: url('/fonts/Bricolage.ttf');
 }
 
 * {
