@@ -3,7 +3,7 @@ import React from "react";
 const TotalExpenses = () => {
   const expenseData = JSON.parse(localStorage.getItem("expenses")) || [];
   const totalAmount = expenseData.reduce(
-    (sum, item) => sum + Number(item?.amount ?? 0),
+    (sum, item) => sum + Number(item?.totalAmount ?? 0),
     0,
   );
 

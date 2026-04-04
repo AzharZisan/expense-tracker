@@ -19,23 +19,26 @@ const TableView = () => {
           </div>
         ) : (
           expenseData.map((item) => {
-            return (
-              <div
-                key={item.id}
-                className="w-full h-auto flex justify-around border-b-2 items-center border-[#800f2f] text-[#800f2f]"
-              >
-                <p className="w-full flex justify-center items-center">
-                  {item.entries.map((i) => i.date)}
-                </p>
-                <p className="w-full flex justify-center items-center">
-                  ${Number(item.entries.map((i) => i.amount))}
-                </p>
-                <p className="w-full flex justify-center items-center">
-                  {item.type}
-                </p>
-              </div>
-            );
-          })
+              return item.entries.map((i) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="w-full h-auto flex justify-around border-b-2 items-center border-[#800f2f] text-[#800f2f]"
+                  >
+                    <p className="w-full flex justify-center items-center">
+                      {item.date}
+                    </p>
+                    <p className="w-full flex justify-center items-center">
+                      ${i.amount}
+                    </p>
+                    <p className="w-full flex justify-center items-center">
+                      {i.type}
+                    </p>
+                  </div>
+                );
+              });
+            }
+          )
         )}
       </div>
     </>

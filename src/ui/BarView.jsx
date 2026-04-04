@@ -17,11 +17,9 @@ const BarView = () => {
 
   const { startOfWeek, endOfWeek } = getWeekRange();
   const weekFilter = expenses.filter((item) => {
-    return item.entries.map((i) => {
-      const itemDate = Temporal.PlainDate.from(i.date);
-      Temporal.PlainDate.compare(itemDate, startOfWeek) >= 0 &&
-        Temporal.PlainDate.compare(itemDate, endOfWeek) <= 0;
-    });
+    const itemDate = Temporal.PlainDate.from(item.date);
+    Temporal.PlainDate.compare(itemDate, startOfWeek) >= 0 &&
+      Temporal.PlainDate.compare(itemDate, endOfWeek) <= 0;
   });
 
   const thisMonth = Temporal.Now.plainDateISO().month;

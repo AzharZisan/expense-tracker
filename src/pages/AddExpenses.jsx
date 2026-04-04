@@ -24,8 +24,6 @@ const AddExpenses = () => {
     setTypeInputValue("");
   };
 
-  const typeID = existingTypes.map((item) => item.id);
-
   const handleTypeFocus = () => {
     typeRef.current.value;
   };
@@ -38,16 +36,16 @@ const AddExpenses = () => {
     const existingExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
     const expenseData = {
       id: crypto.randomUUID(),
-      type: typeRef.current.value,
-      totalAmount: amount,
-      typeID: typeID[0],
-      entries: [{ date: dateRef.current.value, amount: amount }],
+      date: dateRef.current.value,
+      totalAmount: Number(amount),
+      entries: [{ type: typeRef.current.value, amount: Number(amount) }],
     };
 
     const updatedExpenses = [...existingExpenses, expenseData];
 
     const mergedExpenses = updatedExpenses.reduce((acc, item) => {
-      const existing = acc.find((e) => e.typeID === item.typeID);
+      const existing = acc.find((e) => e.date === item.date);
+      console.log(existing)
 
       if (existing) {
         existing.entries.push(...item.entries);
