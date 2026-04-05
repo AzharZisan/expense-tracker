@@ -18,7 +18,7 @@ function App() {
       <Nav />
       {/* section for total expenses */}
       <section className="w-full h-auto p-4 mt-18">
-        <div className="w-full h-auto flex justify-between items-center rounded-xl bg-[#800f2f] py-2 pl-4 pr-5">
+        <div className="w-full h-auto flex justify-center items-between flex-col gap-4 rounded-xl p-3 bg-[#800f2f]   sm:justify-between sm:items-center sm:gap-0 sm:flex-row lg:py-2 lg:px-4 xl:py-2 xl:pl-4 xl:pr-5">
           <TotalExpenses />
           {/* duration filter */}
           <AddButton />
@@ -26,7 +26,7 @@ function App() {
       </section>
 
       <section className="w-full h-auto p-4">
-        <div className="w-full h-auto flex justify-center items-center gap-4">
+        <div className="w-full h-auto flex justify-center items-center flex-col md:flex-row gap-4">
           <TableView />
           <BarView />
         </div>

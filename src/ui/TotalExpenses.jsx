@@ -9,13 +9,13 @@ const TotalExpenses = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-start">
-        <h2 className="text-lg font-semibold text-[#ffccd5] flex justify-center items-center gap-1">
+        <h2 className="text-md font-semibold text-[#ffccd5] flex justify-center items-center gap-1 lg:text-lg">
           Total Expenses
-          <span className="text-[10px] text-[#590d22] bg-[#ffccd5] font-bold py-0.5 px-2 rounded-xl">
+          <span className="text-[9px] text-[#590d22] bg-[#ffccd5] font-bold py-0.5 px-2 rounded-xl">
             Untill Today
           </span>
         </h2>
-        <p className="text-4xl text-[#fff0f3]">${expenseData.length > 0 ? todayExpenses : '0'}</p>
+        <p className="text-7xl text-[#fff0f3] sm:text-4xl">${expenseData.length > 0 ? todayExpenses : '0'}</p>
       </div>
     </>
   );

@@ -103,32 +103,34 @@ const BarView = () => {
   return (
     <>
       <GraphContext.Provider value={{ labels, amounts }}>
-        <div className="w-full h-[300px] flex justify-center items-center relative">
-          <div className="w-auto h-auto flex flex-col justify-center items-start gap-2 absolute top-0 left-4">
-            <button
-              onClick={() => setBtnStates("thisDay")}
-              className={`py-1 px-2 text-sm rounded-xl ${btnStates === "thisDay" ? "bg-[#ffb3c1] text-[#a4133c]" : "bg-[#c9184a] text-[#fff0f3]"}`}
-            >
-              This Day
-            </button>
-            <button
-              onClick={() => setBtnStates("thisWeek")}
-              className={`py-1 px-2 text-sm rounded-xl ${btnStates === "thisWeek" ? "bg-[#ffb3c1] text-[#a4133c]" : "bg-[#c9184a] text-[#fff0f3]"}`}
-            >
-              This Week
-            </button>
-            <button
-              onClick={() => setBtnStates("thisMonth")}
-              className={`py-1 px-2 text-sm rounded-xl ${btnStates === "thisMonth" ? "bg-[#ffb3c1] text-[#a4133c]" : "bg-[#c9184a] text-[#fff0f3]"}`}
-            >
-              This Month
-            </button>
+        <div className="w-full h-[400px] flex justify-center items-end sm:h-auto sm:block">
+          <div className="w-full h-[300px] flex justify-center items-center relative">
+            <div className="w-auto h-auto flex flex-col justify-center items-start gap-2 absolute -top-23 left-0 sm:top-0 sm:left-0">
+              <button
+                onClick={() => setBtnStates("thisDay")}
+                className={`py-1 px-2 text-sm rounded-xl ${btnStates === "thisDay" ? "bg-[#ffb3c1] text-[#a4133c]" : "bg-[#c9184a] text-[#fff0f3]"}`}
+              >
+                This Day
+              </button>
+              <button
+                onClick={() => setBtnStates("thisWeek")}
+                className={`py-1 px-2 text-sm rounded-xl ${btnStates === "thisWeek" ? "bg-[#ffb3c1] text-[#a4133c]" : "bg-[#c9184a] text-[#fff0f3]"}`}
+              >
+                This Week
+              </button>
+              <button
+                onClick={() => setBtnStates("thisMonth")}
+                className={`py-1 px-2 text-sm rounded-xl ${btnStates === "thisMonth" ? "bg-[#ffb3c1] text-[#a4133c]" : "bg-[#c9184a] text-[#fff0f3]"}`}
+              >
+                This Month
+              </button>
+            </div>
+            <div className="flex flex-col justify-center items-center absolute top-[50%] left-[50%] -translate-[50%] z-0">
+              <p className="text-5xl text-[#a4133c]">${typeLength}</p>
+              <p className="text-lg text-[#a4133c]">In Expenses</p>
+            </div>
+            <CircleChart />
           </div>
-          <div className="flex flex-col justify-center items-center absolute top-[50%] left-[50%] -translate-[50%] z-0">
-            <p className="text-5xl text-[#a4133c]">${typeLength}</p>
-            <p className="text-lg text-[#a4133c]">In Expenses</p>
-          </div>
-          <CircleChart />
         </div>
       </GraphContext.Provider>
     </>

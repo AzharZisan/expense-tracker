@@ -44,8 +44,8 @@ const DataSearch = () => {
   return (
     <>
       <SearchContext.Provider value={{ labels, amounts }}>
-        <div className="w-full bg-[#ffccd5] rounded-2xl px-8 pb-8 pt-4">
-          <p className="text-xl font-semibold pb-2 text-[#800f2f]">
+        <div className="w-full bg-[#ffccd5] rounded-2xl p-4">
+          <p className="text-md font-semibold pb-2 text-[#800f2f] md:text-xl xl:text-2xl">
             Search Expenses For
           </p>
           <div className="w-full flex justify-start items-center gap-2 pb-6">
@@ -53,11 +53,11 @@ const DataSearch = () => {
               value={search}
               onChange={handleSearchFocus}
               type="date"
-              className="w-auto border-2 border-[#800f2f] rounded-xl py-1 px-2 bg-[#fff0f3] text-[#800f2f] outline-none"
+              className="w-auto border-2 border-[#800f2f] rounded-xl py-1 px-1 md:px-2 bg-[#fff0f3] text-[#800f2f] outline-none"
             />
             <button
               onClick={handleEnter}
-              className="w-auto border-2 border-transparent rounded-xl py-1 px-2 bg-[#800f2f] hover:bg-[#fff0f3]  text-[#fff0f3] hover:text-[#800f2f] hover:border-[#800f2f]"
+              className="w-auto border-2 border-transparent rounded-xl py-1 px-1 md:px-2 bg-[#800f2f] hover:bg-[#fff0f3]  text-[#fff0f3] hover:text-[#800f2f] hover:border-[#800f2f] text-sm md:text-[1rem]"
             >
               Search
             </button>
