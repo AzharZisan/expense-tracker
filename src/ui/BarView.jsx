@@ -57,8 +57,8 @@ const BarView = () => {
       .flatMap((item) => item.entries.filter(() => item.date === thisDay))
       .map((it) => it.amount);
     typeLength = merged.flatMap((item) =>
-      item.entries.filter(() => item.date === thisDay),
-    ).length;
+      item.entries.filter(() => item.date === thisDay)).reduce((acc, item) => {return acc + item?.amount ?? 0}, 0)
+    console.log(typeLength)
   } else if (btnStates === "thisWeek") {
     const allEntries = weekFilter.flatMap((item) => item.entries);
 
@@ -74,7 +74,10 @@ const BarView = () => {
     }, []);
     labels = weekMerge.map((i) => i.type);
     amounts = weekMerge.map((i) => i.amount);
-    typeLength = weekMerge.length
+    typeLength = weekMerge.reduce((acc, item) => {
+      return acc + item?.amount ?? 0;
+    }, 0);
+    // console.log(weekMerge)
   } else if (btnStates === "thisMonth") {
     const allEntries = monthFilter.flatMap((item) => item.entries);
 
@@ -89,7 +92,9 @@ const BarView = () => {
     }, []);
     labels = monthMerge.map((i) => i.type);
     amounts = monthMerge.map((i) => i.amount);
-    typeLength = monthMerge.length
+    typeLength = monthMerge.reduce((acc, item) => {
+      return acc + item?.amount ?? 0;
+    }, 0);
   } else {
     labels = merged.flatMap((item) => item.entries.map((i) => i.type));
     amounts = merged.flatMap((item) => item.entries.map((i) => i.amount));
@@ -97,9 +102,7 @@ const BarView = () => {
 
   return (
     <>
-      <GraphContext.Provider
-        value={{ labels, amounts }}
-      >
+      <GraphContext.Provider value={{ labels, amounts }}>
         <div className="w-full h-[300px] flex justify-center items-center relative">
           <div className="w-auto h-auto flex flex-col justify-center items-start gap-2 absolute top-0 left-4">
             <button
@@ -122,8 +125,8 @@ const BarView = () => {
             </button>
           </div>
           <div className="flex flex-col justify-center items-center absolute top-[50%] left-[50%] -translate-[50%] z-0">
-            <p className="text-6xl text-[#a4133c]">{typeLength}</p>
-            <p className="text-xl text-[#a4133c]">Types</p>
+            <p className="text-5xl text-[#a4133c]">${typeLength}</p>
+            <p className="text-lg text-[#a4133c]">In Expenses</p>
           </div>
           <CircleChart />
         </div>

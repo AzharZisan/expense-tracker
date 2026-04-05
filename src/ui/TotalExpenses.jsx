@@ -4,8 +4,7 @@ import { Temporal } from "@js-temporal/polyfill";
 const TotalExpenses = () => {
   const expenseData = JSON.parse(localStorage.getItem("expenses")) || [];
   const thisDay = Temporal.Now.plainDateISO().toString()
-  const todayExpenses = expenseData.filter((i) => i.date === thisDay)
-  const totalAmount = todayExpenses.map((i) => i.totalAmount)
+  const todayExpenses = expenseData.reduce((acc, item) => {return acc + item?.totalAmount ?? 0},0)
 
   return (
     <>
@@ -13,10 +12,10 @@ const TotalExpenses = () => {
         <h2 className="text-lg font-semibold text-[#ffccd5] flex justify-center items-center gap-1">
           Total Expenses
           <span className="text-[10px] text-[#590d22] bg-[#ffccd5] font-bold py-0.5 px-2 rounded-xl">
-            Today
+            Untill Today
           </span>
         </h2>
-        <p className="text-4xl text-[#fff0f3]">${todayExpenses.length === 0 ? '0' : totalAmount}</p>
+        <p className="text-4xl text-[#fff0f3]">${expenseData.length > 0 ? todayExpenses : '0'}</p>
       </div>
     </>
   );

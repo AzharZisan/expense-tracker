@@ -6,7 +6,7 @@ import { Temporal } from "@js-temporal/polyfill";
 const DataSearch = () => {
   const thisDay = Temporal.Now.plainDateISO().toString();
   const [search, setSearch] = useState(thisDay);
-  const [btnInput, setBtnInput] = useState();
+  const [btnInput, setBtnInput] = useState(thisDay);
 
   const handleSearchFocus = (e) => {
     setSearch(e.target.value);
