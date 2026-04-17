@@ -45,7 +45,6 @@ const AddExpenses = () => {
 
     const mergedExpenses = updatedExpenses.reduce((acc, item) => {
       const existing = acc.find((e) => e.date === item.date);
-      console.log(existing)
 
       if (existing) {
         existing.entries.push(...item.entries);
